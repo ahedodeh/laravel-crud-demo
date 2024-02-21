@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
-use App\Models\customer;
-use App\Http\Requests\StorecustomerRequest;
-use App\Http\Requests\UpdatecustomerRequest;
+use App\Models\invoice;
+use App\Http\Requests\StoreinvoiceRequest;
+use App\Http\Requests\UpdateinvoiceRequest;
+use App\Http\Controllers\Controller;
 
-class CustomerController extends Controller
+
+class InvoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorecustomerRequest $request)
+    public function store(StoreinvoiceRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(customer $customer)
+    public function show(invoice $invoice)
     {
         //
     }
@@ -43,7 +45,7 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(customer $customer)
+    public function edit(invoice $invoice)
     {
         //
     }
@@ -51,7 +53,7 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatecustomerRequest $request, customer $customer)
+    public function update(UpdateinvoiceRequest $request, invoice $invoice)
     {
         //
     }
@@ -59,7 +61,7 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(customer $customer)
+    public function destroy(invoice $invoice)
     {
         //
     }
