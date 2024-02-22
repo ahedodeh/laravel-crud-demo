@@ -16,7 +16,7 @@ class CustomerCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         return [
-            'data' => $this->collection->map(function ($customer) {
+            'data' => $this->map(function ($customer) {
                 return [
                     'id'   => $customer->id,
                     'name' => $customer->name,

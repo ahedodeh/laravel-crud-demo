@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Customer;
-use App\Http\Requests\StorecustomerRequest;
-use App\Http\Requests\UpdatecustomerRequest;
+use App\Http\Requests\V1\StorecustomerRequest;
+use App\Http\Requests\V1\UpdatecustomerRequest;
 
 use App\Http\Controllers\Controller;
 
@@ -22,20 +22,14 @@ class CustomerController extends Controller
         return new CustomerCollection(Customer::paginate());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        
-    }
+   
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StorecustomerRequest $request)
     {
-        //
+        return new CustomerResource(Customer::create($request->all()));
     }
 
     /**
@@ -46,27 +40,33 @@ class CustomerController extends Controller
         return new CustomerResource($customer);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(customer $customer)
-    {
-        //
-    }
-
+  
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdatecustomerRequest $request, customer $customer)
-    {
-        //
-    }
+{
+    
+    \Illuminate\Support\Facades\Log::info("Request Method:". $request->method());
+
+    $customer->update($request->all());
+
+    return response()->json([
+        'message' => 'Customer updated successfully',
+        'customer' => new CustomerResource($customer),
+        'log' => "Request Method: " . $request->method(),
+    ]);
+}
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(customer $customer)
-    {
-        //
-    }
+    public function destroy(Customer $customer)
+{
+        $customer->delete();
+
+        return new CustomerResource($customer);
+    
+}
+
 }
